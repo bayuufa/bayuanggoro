@@ -263,13 +263,13 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-right: 20px; /* Ruang antara gambar dan teks */
+    padding-right: 10px; /* Ruang antara gambar dan teks */
 }
 
 .about-image img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 50px;
 }
 
 .about-text {
@@ -376,7 +376,7 @@ footer {
     }
 
     .about-image img {
-        max-width: 100%;
+        max-width: 60%;
         height: auto;
     }
 
