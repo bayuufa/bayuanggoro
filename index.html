@@ -131,20 +131,25 @@
 
     // Smooth scroll and close menu when a menu item is clicked
     navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah perilaku default (melompat langsung)
-            
-            // Scroll halus ke target
-            const targetId = item.getAttribute('href').substring(1); // Ambil ID dari href
-            const targetSection = document.getElementById(targetId); // Cari elemen dengan ID tersebut
+    item.addEventListener('click', (e) => {
+        const targetHref = item.getAttribute('href');
+        if (!targetHref.startsWith("#")) {
+            return; // Tidak melakukan apa-apa jika itu adalah link eksternal
+        }
+        e.preventDefault(); // Mencegah perilaku default hanya untuk link internal
+        
+        const targetId = targetHref.substring(1); // Ambil ID dari href
+        const targetSection = document.getElementById(targetId); // Cari elemen dengan ID tersebut
+        if (targetSection) {
             targetSection.scrollIntoView({
                 behavior: 'smooth'
             });
+        }
 
-            // Tutup menu setelah memilih item
-            document.body.classList.remove('nav-active');
-        });
+        document.body.classList.remove('nav-active');
     });
+});
+
 
     // Smooth scroll to "about" section when the "Pelajari Lebih Lanjut" button is clicked
     learnMoreButton.addEventListener('click', (e) => {
